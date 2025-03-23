@@ -71,12 +71,13 @@ const InvitationPreview: React.FC<InvitationPreviewProps> = ({ invitation }) => 
         <AspectRatio ratio={1.414 / 1} className="overflow-visible">
           <div 
             id="invitation-for-download"
-            className="invitation-container rounded-lg shadow-xl border overflow-hidden transition-all duration-500 ease-in-out"
+            className="invitation-container rounded-lg shadow-2xl border overflow-hidden transition-all duration-500 ease-in-out"
             style={{ 
               backgroundImage: backgroundImage ? getBackgroundImage() : undefined,
               backgroundColor: backgroundImage ? undefined : 'white',
               width: '100%',
-              height: '100%'
+              height: '100%',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.1)'
             }}
           >
             {backgroundImage && <div className="glass-overlay"></div>}

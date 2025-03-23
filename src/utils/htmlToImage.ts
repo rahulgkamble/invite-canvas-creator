@@ -11,13 +11,14 @@ export const downloadInvitationAsImage = async (elementId: string, fileName: str
     }
     
     // Add a small delay to ensure all rendering is complete
-    await new Promise(resolve => setTimeout(resolve, 300));
+    await new Promise(resolve => setTimeout(resolve, 500));
     
     toast.promise(
       toPng(element, { 
         quality: 1.0,
         pixelRatio: 3, // Higher pixel ratio for better quality
         cacheBust: true,
+        includeQueryParams: true,
         style: {
           // Ensure proper rendering for download
           transform: 'scale(1)',
@@ -27,7 +28,7 @@ export const downloadInvitationAsImage = async (elementId: string, fileName: str
         }
       }),
       {
-        loading: 'Generating your invitation image...',
+        loading: 'Creating your beautiful invitation...',
         success: (dataUrl) => {
           // Create a link element to download the image
           const link = document.createElement('a');
@@ -35,7 +36,7 @@ export const downloadInvitationAsImage = async (elementId: string, fileName: str
           link.href = dataUrl;
           link.click();
           
-          return 'Invitation downloaded successfully!';
+          return 'Your invitation was downloaded successfully!';
         },
         error: 'Failed to generate the invitation image. Please try again.',
       }
