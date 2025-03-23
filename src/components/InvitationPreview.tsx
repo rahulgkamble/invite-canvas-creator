@@ -2,6 +2,7 @@
 import React from "react";
 import { InvitationData } from "./InvitationEditor";
 import { cn } from "@/lib/utils";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 interface InvitationPreviewProps {
   invitation: InvitationData;
@@ -66,78 +67,84 @@ const InvitationPreview: React.FC<InvitationPreviewProps> = ({ invitation }) => 
     <div className="flex flex-col items-center justify-center pb-10">
       <h2 className="text-xl font-medium mb-6">Preview</h2>
       
-      <div 
-        id="invitation-for-download"
-        className="invitation-container rounded-md shadow-xl border overflow-hidden transition-all duration-500 ease-in-out"
-        style={{ 
-          backgroundImage: backgroundImage ? getBackgroundImage() : undefined,
-          backgroundColor: backgroundImage ? undefined : 'white',
-        }}
-      >
-        {backgroundImage && <div className="glass-overlay"></div>}
-        
-        <div className="invitation-content">
+      <div className="w-full max-w-[600px]">
+        <AspectRatio ratio={1.414 / 1} className="overflow-visible">
           <div 
-            className={cn(
-              "px-6 py-4 rounded-md mb-6",
-              getAccentColorClass()
-            )}
+            id="invitation-for-download"
+            className="invitation-container rounded-lg shadow-xl border overflow-hidden transition-all duration-500 ease-in-out"
+            style={{ 
+              backgroundImage: backgroundImage ? getBackgroundImage() : undefined,
+              backgroundColor: backgroundImage ? undefined : 'white',
+              width: '100%',
+              height: '100%'
+            }}
           >
-            <h3 className={cn(
-              "text-sm uppercase tracking-wider font-medium",
-              getFontClass(),
-              getThemeColorClass()
-            )}>
-              Wedding Invitation
-            </h3>
+            {backgroundImage && <div className="glass-overlay"></div>}
+            
+            <div className="invitation-content">
+              <div 
+                className={cn(
+                  "px-6 py-4 rounded-md mb-4",
+                  getAccentColorClass()
+                )}
+              >
+                <h3 className={cn(
+                  "text-sm uppercase tracking-wider font-medium",
+                  getFontClass(),
+                  getThemeColorClass()
+                )}>
+                  Wedding Invitation
+                </h3>
+              </div>
+              
+              <h1 className={cn(
+                "invitation-title text-3xl md:text-4xl font-semibold mb-3",
+                getFontClass(),
+                getThemeColorClass()
+              )}>
+                {brideFirstName} & {groomFirstName}
+              </h1>
+              
+              <p className={cn(
+                "invitation-subtitle text-base md:text-lg",
+                getFontClass(),
+                "text-foreground/90"
+              )}>
+                {message}
+              </p>
+              
+              <div className={cn(
+                "w-24 h-px my-4",
+                themeColor === 'gold' ? 'bg-gold' : 
+                themeColor === 'rose' ? 'bg-rose' : 
+                themeColor === 'navy' ? 'bg-navy' : 
+                themeColor === 'sage' ? 'bg-sage' : 
+                'bg-lavender'
+              )}></div>
+              
+              <div className={cn(
+                "invitation-details space-y-2",
+                getFontClass()
+              )}>
+                <p className="text-lg font-medium">
+                  {brideFirstName} {brideLastName} & {groomFirstName} {groomLastName}
+                </p>
+                
+                <p className="text-base">
+                  {date} at {time}
+                </p>
+                
+                <p className="text-base">
+                  {venue}
+                </p>
+                
+                <p className="text-sm text-foreground/80">
+                  {address}
+                </p>
+              </div>
+            </div>
           </div>
-          
-          <h1 className={cn(
-            "invitation-title text-4xl md:text-5xl font-semibold mb-4",
-            getFontClass(),
-            getThemeColorClass()
-          )}>
-            {brideFirstName} & {groomFirstName}
-          </h1>
-          
-          <p className={cn(
-            "invitation-subtitle text-lg md:text-xl",
-            getFontClass(),
-            "text-foreground/90"
-          )}>
-            {message}
-          </p>
-          
-          <div className={cn(
-            "w-24 h-px my-6",
-            themeColor === 'gold' ? 'bg-gold' : 
-            themeColor === 'rose' ? 'bg-rose' : 
-            themeColor === 'navy' ? 'bg-navy' : 
-            themeColor === 'sage' ? 'bg-sage' : 
-            'bg-lavender'
-          )}></div>
-          
-          <div className={cn(
-            "invitation-details space-y-3",
-            getFontClass()
-          )}>
-            <p className="text-xl font-medium">
-              {brideFirstName} {brideLastName} & {groomFirstName} {groomLastName}
-            </p>
-            
-            <p className="text-lg">
-              {date} at {time}
-            </p>
-            
-            <p className="text-lg">
-              {venue}
-            </p>
-            
-            <p className="text-base text-foreground/80">
-              {address}
-            </p>
-          </div>
-        </div>
+        </AspectRatio>
       </div>
     </div>
   );

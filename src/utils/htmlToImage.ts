@@ -10,11 +10,21 @@ export const downloadInvitationAsImage = async (elementId: string, fileName: str
       throw new Error('Element not found');
     }
     
+    // Add a small delay to ensure all rendering is complete
+    await new Promise(resolve => setTimeout(resolve, 300));
+    
     toast.promise(
       toPng(element, { 
-        quality: 0.95,
-        pixelRatio: 2,
+        quality: 1.0,
+        pixelRatio: 3, // Higher pixel ratio for better quality
         cacheBust: true,
+        style: {
+          // Ensure proper rendering for download
+          transform: 'scale(1)',
+          transformOrigin: 'top left',
+          width: '100%',
+          height: '100%'
+        }
       }),
       {
         loading: 'Generating your invitation image...',
