@@ -3,6 +3,14 @@ import React from "react";
 import InvitationEditor from "@/components/InvitationEditor";
 
 const Index = () => {
+  // Wedding style images with reliable URLs
+  const weddingStyles = [
+    { name: 'Classic', imageUrl: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=300&h=400&q=80' },
+    { name: 'Modern', imageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=300&h=400&q=80' },
+    { name: 'Bohemian', imageUrl: 'https://images.unsplash.com/photo-1482575832494-771f74bf6857?auto=format&fit=crop&w=300&h=400&q=80' },
+    { name: 'Elegant', imageUrl: 'https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=300&h=400&q=80' },
+  ];
+  
   return (
     <div className="min-h-screen relative overflow-hidden animate-fade-in">
       {/* Hero Background */}
@@ -45,16 +53,16 @@ const Index = () => {
         <div className="mb-12 text-center">
           <h2 className="text-xl font-medium mb-6">Premium Wedding Styles</h2>
           <div className="grid grid-cols-4 gap-4">
-            {['Classic', 'Modern', 'Bohemian', 'Elegant'].map((style) => (
-              <div key={style} className="relative overflow-hidden rounded-lg aspect-[3/4] group">
+            {weddingStyles.map((style) => (
+              <div key={style.name} className="relative overflow-hidden rounded-lg aspect-[3/4] group">
                 <img 
-                  src={`https://images.unsplash.com/photo-15${Math.floor(10000000 + Math.random() * 90000000)}?auto=format&fit=crop&w=300&h=400&q=80`}
-                  alt={`${style} style`}
+                  src={style.imageUrl}
+                  alt={`${style.name} style`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80"></div>
                 <div className="absolute bottom-0 left-0 w-full p-3 text-white">
-                  <p className="font-medium">{style}</p>
+                  <p className="font-medium">{style.name}</p>
                 </div>
               </div>
             ))}
