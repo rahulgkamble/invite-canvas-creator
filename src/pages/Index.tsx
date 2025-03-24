@@ -5,34 +5,89 @@ import InvitationEditor from "@/components/InvitationEditor";
 const Index = () => {
   return (
     <div className="min-h-screen relative overflow-hidden animate-fade-in">
-      {/* Background Layers */}
-      <div className="fixed inset-0 bg-gradient-to-br from-lavender-light/80 via-rose-light/50 to-gold-light/70 z-0"></div>
+      {/* Hero Background */}
+      <div className="fixed inset-0 bg-gradient-to-b from-white via-rose-light/10 to-lavender-light/20 z-0"></div>
       
-      {/* Decorative Elements */}
-      <div className="fixed inset-0 bg-[url('https://images.unsplash.com/photo-1523374228107-6e44bd2b524e?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10 z-0"></div>
-      <div className="fixed top-0 left-0 w-full h-64 bg-gradient-to-b from-gold/20 to-transparent z-0"></div>
-      <div className="fixed bottom-0 left-0 w-full h-64 bg-gradient-to-t from-lavender/20 to-transparent z-0"></div>
+      {/* Main Background Image */}
+      <div className="fixed inset-0 bg-[url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20 z-0"></div>
       
-      {/* Floating Ornaments */}
-      <div className="fixed top-10 right-10 w-32 h-32 rounded-full bg-rose/5 blur-3xl z-0"></div>
-      <div className="fixed bottom-20 left-20 w-40 h-40 rounded-full bg-gold/10 blur-3xl z-0"></div>
-      <div className="fixed top-1/4 left-1/3 w-24 h-24 rounded-full bg-lavender/10 blur-2xl z-0"></div>
+      {/* Overlay Gradients */}
+      <div className="fixed top-0 left-0 w-full h-64 bg-gradient-to-b from-white to-transparent z-0"></div>
+      <div className="fixed bottom-0 left-0 w-full h-64 bg-gradient-to-t from-white to-transparent z-0"></div>
       
-      <div className="max-w-screen-xl mx-auto relative z-10 py-12 px-4">
-        <header className="text-center mb-12 animate-slide-down">
-          <div className="inline-block p-2 px-6 mb-3 bg-primary/5 backdrop-blur-sm rounded-full border border-primary/10 shadow-sm">
-            <span className="text-primary/80 text-sm font-medium tracking-wider uppercase">Create Your Perfect Wedding Invitation</span>
+      <div className="max-w-screen-xl mx-auto relative z-10 py-8 px-4">
+        <header className="text-center mb-10 animate-slide-down">
+          {/* Wedding Logo/Icon */}
+          <div className="mb-4">
+            <img 
+              src="https://images.unsplash.com/photo-1554178286-db408c69256a?auto=format&fit=crop&w=150&h=150&q=80" 
+              alt="Wedding icon" 
+              className="w-16 h-16 mx-auto rounded-full object-cover border-2 border-primary/20 shadow-md"
+            />
           </div>
+          
           <h1 className="font-script text-5xl md:text-6xl lg:text-7xl text-primary tracking-tight mb-3 drop-shadow-sm">
             Wedding Invitation Creator
           </h1>
+          
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-            Design a beautiful, personalized wedding invitation that perfectly captures your special day
+            Design beautiful, personalized wedding invitations with our premium tools
           </p>
-          <div className="h-px w-24 bg-primary/20 mx-auto mt-6"></div>
+          
+          <div className="flex justify-center mt-6 gap-3">
+            <span className="px-3 py-1 bg-rose-light/30 text-rose-dark rounded-full text-xs font-medium">Premium Designs</span>
+            <span className="px-3 py-1 bg-gold-light/30 text-gold-dark rounded-full text-xs font-medium">Easy Customization</span>
+            <span className="px-3 py-1 bg-lavender-light/30 text-lavender-dark rounded-full text-xs font-medium">Instant Download</span>
+          </div>
         </header>
         
-        <InvitationEditor />
+        {/* Featured Wedding Styles */}
+        <div className="mb-12 text-center">
+          <h2 className="text-xl font-medium mb-6">Premium Wedding Styles</h2>
+          <div className="grid grid-cols-4 gap-4">
+            {['Classic', 'Modern', 'Bohemian', 'Elegant'].map((style) => (
+              <div key={style} className="relative overflow-hidden rounded-lg aspect-[3/4] group">
+                <img 
+                  src={`https://images.unsplash.com/photo-15${Math.floor(10000000 + Math.random() * 90000000)}?auto=format&fit=crop&w=300&h=400&q=80`}
+                  alt={`${style} style`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80"></div>
+                <div className="absolute bottom-0 left-0 w-full p-3 text-white">
+                  <p className="font-medium">{style}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Design Editor Section */}
+        <div className="relative">
+          <div className="absolute -top-6 -left-6 w-32 h-32 bg-rose-light/20 rounded-full blur-3xl z-0"></div>
+          <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gold-light/20 rounded-full blur-3xl z-0"></div>
+          
+          <div className="relative z-10 py-6 px-4 lg:px-8 bg-white/70 backdrop-blur-md rounded-xl shadow-lg border border-white/50">
+            <h2 className="text-2xl font-medium text-center mb-6">Create Your Perfect Invitation</h2>
+            <InvitationEditor />
+          </div>
+        </div>
+        
+        {/* Testimonials */}
+        <div className="mt-16 text-center">
+          <h2 className="text-xl font-medium mb-6">What Our Customers Say</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { name: "Sarah & Michael", text: "The invitations looked amazing! All our guests complimented them." },
+              { name: "Jessica & David", text: "So easy to customize and the quality exceeded our expectations." },
+              { name: "Emily & Christopher", text: "Perfect invitations that matched our wedding theme beautifully." }
+            ].map((testimonial, index) => (
+              <div key={index} className="bg-white/70 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-white/50">
+                <p className="text-muted-foreground italic mb-2">{testimonial.text}</p>
+                <p className="font-medium text-sm">{testimonial.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
         
         <footer className="mt-16 text-center text-sm text-muted-foreground animate-fade-in border-t border-border/40 pt-6">
           <p>Create your perfect wedding invitation with our easy-to-use editor</p>

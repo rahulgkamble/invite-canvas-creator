@@ -64,7 +64,7 @@ const InvitationPreview: React.FC<InvitationPreviewProps> = ({ invitation }) => 
   };
   
   return (
-    <div className="flex flex-col items-center justify-center pb-10">
+    <div className="flex flex-col items-center justify-center pb-6">
       <h2 className="text-xl font-medium mb-6">Preview</h2>
       
       <div className="w-full max-w-[600px]">
